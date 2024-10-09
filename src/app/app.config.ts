@@ -5,13 +5,16 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideEffects } from '@ngrx/effects';
+import { groceryReducer } from './store/reducers/grocery.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideStore({}),
+    provideStore({
+      groceries: groceryReducer
+    }),
     provideEffects(),
     provideStoreDevtools({
       maxAge: 3, // Retains last 3 states
@@ -23,3 +26,4 @@ export const appConfig: ApplicationConfig = {
     })
   ]
 };
+
