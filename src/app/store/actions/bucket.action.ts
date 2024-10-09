@@ -6,3 +6,8 @@ export const AddToBucket = createAction(
     props<{payload:Bucket}>()
 )
 
+export const removeFromBucket = createAction(
+    '[Bucket] Remove',
+    props<{payload:Partial<Bucket>}>()
+)
+

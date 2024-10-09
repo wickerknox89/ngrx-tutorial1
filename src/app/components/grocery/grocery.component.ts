@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Grocery } from '../../../models/grocery.model';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { AddToBucket } from '../../store/actions/bucket.action';
+import { AddToBucket, removeFromBucket } from '../../store/actions/bucket.action';
 
 @Component({
   selector: 'app-grocery',
@@ -35,9 +35,10 @@ export class GroceryComponent {
 
   decrement(item:Grocery){
     const payload = {
-      id:item.id,
-      name:item.name
+      id:item.id
     }
+    
+    this.store.dispatch(removeFromBucket({payload}))
   }
-  
+
 }
