@@ -5,10 +5,10 @@ import { Grocery } from "../../../models/grocery.model";
 
 export const selectGroceries = createFeatureSelector<Grocery[]>('groceries') 
 
-export const selectGroceryByType = createSelector(
+export const selectGroceryByType = (type:string) => createSelector(
     selectGroceries,
-    (state)=>{
-        return state.filter(item => item.type == 'fruit')
+    (state) => {
+        return state.filter(item => item.type === type)
     }
 )
 
